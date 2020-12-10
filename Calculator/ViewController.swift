@@ -9,10 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var display: UILabel!
+    @IBOutlet private weak var display: UILabel!
     
     // 사용자가 입력 중인지 아닌지 체크한다.
-    var userIsInTheMiddleOftyping = false
+    private var userIsInTheMiddleOftyping = false
+    private var brain = CalculatorBrain()
     
     // property가 저장 뿐만아니라 연산도 가능하다.
     var displayValue : Double {
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func touchDigit(_ sender: UIButton){
+    @IBAction private func touchDigit(_ sender: UIButton){
         
         let digit = sender.currentTitle!
         if userIsInTheMiddleOftyping {
@@ -40,16 +41,16 @@ class ViewController: UIViewController {
         userIsInTheMiddleOftyping = true
     }
     
-    @IBAction func performOperation(_ sender: UIButton) {
-        userIsInTheMiddleOftyping = false
-        if let methmeticalSymbol = sender.currentTitle {
-            if methmeticalSymbol == "π" {
-                displayValue = Double.pi
-            }
-            if methmeticalSymbol == "√" {
-                displayValue = sqrt(displayValue)
-            }
+    @IBAction private func performOperation(_ sender: UIButton) {
+        if userIsInTheMiddleOftyping {
+            brain.setOperand(operand: displayValue)
+            userIsInTheMiddleOftyping = false
         }
+
+        if let methmeticalSymbol = sender.currentTitle {
+            brain.performOperation(symbol: methmeticalSymbol)
+        }
+        displayValue = brain.result
     }
 }
 
