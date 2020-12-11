@@ -11,6 +11,10 @@ class FaceView: UIView {
     
     var scale: CGFloat = 0.90 // 90 퍼센트
     var mouthCurvature: Double = 1.0 // 1 full smile, -1 full full frown
+    var eyesOpen: Bool = true
+    var eyeBrowtilt: Double = 0.5 // 1 fully  relaxed, -1 full furrow
+    var color: UIColor = UIColor.blue
+    var lineWidth: CGFloat = 5.0
     
     /* 두개골의 사이즈에따라 눈과 입의 사이즈도 변경된다.*/
     private var skullRadius: CGFloat{
@@ -30,6 +34,7 @@ class FaceView: UIView {
         static let SkullRadiusToMouthWidth: CGFloat = 1
         static let SkullRadiusToMouthHeight: CGFloat = 3
         static let SkullRadiusToMouthOffset: CGFloat = 3
+        static let SkullRadiusToBrowOffset: CGFloat = 5
     }
     
     private enum Eye {
@@ -45,7 +50,7 @@ class FaceView: UIView {
             endAngle: CGFloat(2 * Double.pi), // Radian 법으로 0에서 360까지 그림, Double 타입을 CGFloat로 변환
             clockwise: false // 반시계방향으로 그림
         )
-        path.lineWidth = 5.0 // 선굵기
+        path.lineWidth = lineWidth // 선굵기
         return path
     }
     
@@ -64,7 +69,37 @@ class FaceView: UIView {
     private func pathForEye(eye: Eye) -> UIBezierPath {
         let eyeRadius = skullRadius / Ratios.SkullRadiusToEyeRadius // 눈의 반경
         let eyeCenter = getEyeCenter(eye: eye)
-        return pathForCircleCenteredAtPoint(midPoint: eyeCenter, widthRadius: eyeRadius)
+        
+        if eyesOpen {
+            return pathForCircleCenteredAtPoint(midPoint: eyeCenter, widthRadius: eyeRadius)
+        } else {
+            let path = UIBezierPath()
+            path.move(to: CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
+            path.addLine(to: CGPoint(x: eyeCenter.x + eyeRadius, y: eyeCenter.y))
+            path.lineWidth = lineWidth
+            return path
+        }
+    }
+    
+    private func pathForBrow(eye: Eye) -> UIBezierPath {
+        var tilt = eyeBrowtilt
+        switch eye {
+        case .Left : tilt *= -1.0
+        case .Right: break
+        }
+        var browCenter = getEyeCenter(eye: eye)
+        
+        browCenter.y -= skullRadius / Ratios.SkullRadiusToBrowOffset
+        let eyeRadius = skullRadius / Ratios.SkullRadiusToEyeRadius
+        let tiltOffset = CGFloat(max( -1, min(tilt, 1))) * eyeRadius / 2
+        let browStart = CGPoint(x: browCenter.x - eyeRadius, y: browCenter.y - tiltOffset)
+        let browEnd = CGPoint(x: browCenter.x + eyeRadius, y: browCenter.y + tiltOffset)
+        
+        let path = UIBezierPath()
+        path.move(to: browStart)
+        path.addLine(to: browEnd)
+        path.lineWidth = lineWidth
+        return path
     }
     private func pathForMouth() -> UIBezierPath {
         
@@ -90,7 +125,7 @@ class FaceView: UIView {
         let path = UIBezierPath()
         path.move(to: start)
         path.addCurve(to: end, controlPoint1: cp1, controlPoint2: cp2)
-        path.lineWidth = 5.0
+        path.lineWidth = lineWidth
         
         return path
         
@@ -101,6 +136,7 @@ class FaceView: UIView {
         pathForEye(eye: .Left).stroke() // type추론에 의하여 Eye가 올 것을 알기 때문에 Eye.Left라고 하지 않아도 괜찮다
         pathForEye(eye: .Right).stroke()
         pathForMouth().stroke()
+        pathForBrow(eye: .Left).stroke()
+        pathForBrow(eye: .Right).stroke()
     }
-    
 }
