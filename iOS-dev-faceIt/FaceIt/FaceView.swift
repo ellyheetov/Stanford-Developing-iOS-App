@@ -7,14 +7,22 @@
 
 import UIKit
 
+@IBDesignable // 인터페이스 빌더가 story보드에 그림을 그려준다
 class FaceView: UIView {
     
-    var scale: CGFloat = 0.90 // 90 퍼센트
-    var mouthCurvature: Double = 1.0 // 1 full smile, -1 full full frown
-    var eyesOpen: Bool = true
-    var eyeBrowtilt: Double = 0.5 // 1 fully  relaxed, -1 full furrow
-    var color: UIColor = UIColor.blue
-    var lineWidth: CGFloat = 5.0
+    // IBInspectable을 사용하기 위해서는 변수의 타입을 명시적으로 적어야한다
+    @IBInspectable // 인스펙터 설정창에서 확인할 수 있다
+    var scale: CGFloat = 0.90 { didSet { setNeedsDisplay()}} // setNeedsDisplay는 다시 그려져야 함을 의미한다
+    @IBInspectable
+    var mouthCurvature: Double = 1.0 { didSet { setNeedsDisplay()}} // 1 full smile, -1 full full frown
+    @IBInspectable
+    var eyesOpen: Bool = true { didSet { setNeedsDisplay()}}
+    @IBInspectable
+    var eyeBrowtilt: Double = 0.0 { didSet { setNeedsDisplay()}} // 1 fully  relaxed, -1 full furrow
+    @IBInspectable
+    var color: UIColor = UIColor.blue { didSet { setNeedsDisplay()}}
+    @IBInspectable
+    var lineWidth: CGFloat = 5.0 { didSet { setNeedsDisplay()}} // 선 굵기
     
     /* 두개골의 사이즈에따라 눈과 입의 사이즈도 변경된다.*/
     private var skullRadius: CGFloat{
@@ -28,7 +36,7 @@ class FaceView: UIView {
     // 두개골 반경과 눈의 사이즈 등등
     // swfit에서 상수를 만드는 방법 : 구조체를 선언해서 사용한다
     // static은 구조체에서 상수를 나타낸다
-    private struct Ratios {
+    private struct Ratios { // 상대적인 위치
         static let SkullRadiusToEyeOffset: CGFloat = 3
         static let SkullRadiusToEyeRadius: CGFloat = 10
         static let SkullRadiusToMouthWidth: CGFloat = 1
@@ -101,6 +109,7 @@ class FaceView: UIView {
         path.lineWidth = lineWidth
         return path
     }
+    
     private func pathForMouth() -> UIBezierPath {
         
         let mouthWidth = skullRadius / Ratios.SkullRadiusToMouthWidth
@@ -130,6 +139,7 @@ class FaceView: UIView {
         return path
         
     }
+    
     override func draw(_ rect: CGRect) {
         UIColor.blue.set()
         pathForCircleCenteredAtPoint(midPoint: skullCenter, widthRadius: skullRadius).stroke()
