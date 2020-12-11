@@ -14,6 +14,7 @@
 		10831CCF258332A800558375 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10831CCE258332A800558375 /* Assets.xcassets */; };
 		10831CD2258332A800558375 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10831CD0258332A800558375 /* LaunchScreen.storyboard */; };
 		10831CDE2583337B00558375 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10831CDD2583337B00558375 /* FaceView.swift */; };
+		108EBEF825837158006E5EB9 /* FacialExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108EBEF725837158006E5EB9 /* FacialExpression.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		10831CD1258332A800558375 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10831CD3258332A800558375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10831CDD2583337B00558375 /* FaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
+		108EBEF725837158006E5EB9 /* FacialExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialExpression.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				10831CCB258332A700558375 /* Main.storyboard */,
 				10831CDD2583337B00558375 /* FaceView.swift */,
 				10831CD3258332A800558375 /* Info.plist */,
+				108EBEF725837158006E5EB9 /* FacialExpression.swift */,
 			);
 			path = FaceIt;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				108EBEF825837158006E5EB9 /* FacialExpression.swift in Sources */,
 				10831CCA258332A700558375 /* FaceViewController.swift in Sources */,
 				10831CC6258332A700558375 /* AppDelegate.swift in Sources */,
 				10831CC8258332A700558375 /* SceneDelegate.swift in Sources */,
