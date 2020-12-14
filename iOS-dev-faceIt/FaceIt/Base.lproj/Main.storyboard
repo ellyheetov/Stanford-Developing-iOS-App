@@ -57,14 +57,14 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-626" y="233"/>
+            <point key="canvasLocation" x="283" y="281"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="3xk-VU-qiN">
             <objects>
                 <splitViewController allowDoubleColumnStyle="YES" id="0cI-7k-N5u" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="cxX-yx-aNV" kind="relationship" relationship="masterViewController" id="RQF-xq-NwK"/>
+                        <segue destination="6FY-DZ-U2J" kind="relationship" relationship="masterViewController" id="RQF-xq-NwK"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="L01-X7-pxB"/>
                     </connections>
                 </splitViewController>
@@ -72,7 +72,7 @@
             </objects>
             <point key="canvasLocation" x="-1738" y="-270"/>
         </scene>
-        <!--Item-->
+        <!--Emotions View Controller-->
         <scene sceneID="IkD-aB-t91">
             <objects>
                 <viewController id="cxX-yx-aNV" customClass="EmotionsViewController" customModule="FaceIt" customModuleProvider="target" sceneMemberID="viewController">
@@ -125,11 +125,30 @@
                             <constraint firstItem="CgQ-pi-OEW" firstAttribute="centerX" secondItem="NfO-9U-hW8" secondAttribute="centerX" id="y5E-w7-SNm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="aXH-82-3nj"/>
+                    <navigationItem key="navigationItem" id="vyt-0K-tjg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e43-ev-af8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-626" y="-472"/>
+            <point key="canvasLocation" x="284.05797101449275" y="-472.09821428571428"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Ifa-Ii-Tbw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6FY-DZ-U2J" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="aXH-82-3nj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ACe-7f-zQd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cxX-yx-aNV" kind="relationship" relationship="rootViewController" id="00N-iD-4sO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hw4-yg-qr7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-626.08695652173913" y="-472.09821428571428"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
