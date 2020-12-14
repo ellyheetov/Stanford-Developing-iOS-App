@@ -24,6 +24,15 @@ class FaceView: UIView {
     @IBInspectable
     var lineWidth: CGFloat = 5.0 { didSet { setNeedsDisplay()}} // 선 굵기
     
+    @objc func changeScale(recognizer: UIPinchGestureRecognizer){ // recognizer scale 재설정
+        switch recognizer.state {
+        case .changed, .ended : // scale이 움직이면 스케일 확장이나 축소를 점점 증가 시킴
+            scale *= recognizer.scale
+            recognizer.scale = 1.0 // scale이 계속 누적되는것을 방지하기 위해 1.0 으로 매번 초기화 한다.
+        default: break // 나머지는 아무것도 하지 않음
+        }
+    }
+    
     /* 두개골의 사이즈에따라 눈과 입의 사이즈도 변경된다.*/
     private var skullRadius: CGFloat{
         /* 값을 가져오기만 하는 property의 경우 get이라고 따로 명명할 필요 없다*/

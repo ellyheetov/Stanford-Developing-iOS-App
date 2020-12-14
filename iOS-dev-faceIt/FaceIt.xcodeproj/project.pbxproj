@@ -64,8 +64,8 @@
 				10831CC9258332A700558375 /* FaceViewController.swift */,
 				10831CCB258332A700558375 /* Main.storyboard */,
 				10831CDD2583337B00558375 /* FaceView.swift */,
-				10831CD3258332A800558375 /* Info.plist */,
 				108EBEF725837158006E5EB9 /* FacialExpression.swift */,
+				10831CD3258332A800558375 /* Info.plist */,
 			);
 			path = FaceIt;
 			sourceTree = "<group>";
