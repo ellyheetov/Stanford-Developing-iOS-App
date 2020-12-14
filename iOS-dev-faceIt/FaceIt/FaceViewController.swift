@@ -9,6 +9,7 @@ import UIKit
 
 class FaceViewController: UIViewController {
 
+    // MARK: Model
     var expression = FacialExpression(eyes: .Open, eyeBrows: .Normal, mouth: .Smirk) {
         didSet{
             updateUI() // 모델 값이 바뀐다면 View도 바뀌어야 한다
@@ -16,6 +17,7 @@ class FaceViewController: UIViewController {
         }
     }
 
+    // MARK: View
     /* 처음 초기화시 호출되지 않는 문제를 해결하기 위해서 didSet으로 updateUI를 호출한다. 이는 뷰와 연결 될 때 호출되는 함수이다 */
     @IBOutlet weak var faceView: FaceView!{
         didSet {
@@ -56,6 +58,11 @@ class FaceViewController: UIViewController {
     private var eyeBrowTilts = [FacialExpression.EyeBrows.Relaxed: 0.5, .Furrowed: -0.5, .Normal: 0.0]
     
     private func updateUI() {
+        /*
+        암묵적으로 FaceView가 Unwrapping되어있지만 여전히 Optional 타입으로 체크되어 에러가 발생될 수 있다.
+        faceView?.XXX 로 Optional Chaining을 걸어줄수도 있지만 if문으로 check하는것이 더욱 깔끔하다.
+         */
+        if faceView != nil {
         switch expression.eyes { // 눈을 뜨고 있는 상황이라면
         case .Open : faceView.eyesOpen = true
         case .Closed : faceView.eyesOpen = false
@@ -64,6 +71,7 @@ class FaceViewController: UIViewController {
         faceView.mouthCurvature = mouthCurvatures[expression.mouth] ?? 0.0
         //dictionaly lookup 과정에서 반환값은 optional 값이다. nil을 반환하는 경우 default value 로 0.0으로 설정한다.
         faceView.eyeBrowtilt = eyeBrowTilts[expression.eyeBrows] ?? 0.0
+        }
     }
 }
 
