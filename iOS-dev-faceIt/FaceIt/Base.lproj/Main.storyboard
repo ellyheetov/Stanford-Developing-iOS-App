@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Face View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FaceViewController" customModule="FaceIt" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,17 +20,6 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <gestureRecognizers/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="mouthCurvature">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="scale">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="goW-6H-5KJ" appends="YES" id="K96-2E-gMn"/>
                                 </connections>
@@ -45,7 +34,7 @@
                             <constraint firstItem="U9m-sO-bAj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="na6-Wl-ujH"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="tby-pQ-T8b"/>
+                    <navigationItem key="navigationItem" id="Lwa-A8-DcO"/>
                     <connections>
                         <outlet property="faceView" destination="U9m-sO-bAj" id="Tvv-B0-Z7u"/>
                     </connections>
@@ -57,15 +46,15 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="283" y="281"/>
+            <point key="canvasLocation" x="1192.753623188406" y="280.58035714285711"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="3xk-VU-qiN">
             <objects>
                 <splitViewController allowDoubleColumnStyle="YES" id="0cI-7k-N5u" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="6FY-DZ-U2J" kind="relationship" relationship="masterViewController" id="RQF-xq-NwK"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="L01-X7-pxB"/>
+                        <segue destination="6FY-DZ-U2J" kind="relationship" relationship="masterViewController" id="dgk-L7-yru"/>
+                        <segue destination="2N8-Bb-haa" kind="relationship" relationship="detailViewController" id="leT-Vx-AS4"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53E-jh-RNw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -88,7 +77,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="Angy"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="angry" id="pGg-nh-g1W"/>
+                                            <segue destination="2N8-Bb-haa" kind="showDetail" identifier="angry" id="pGg-nh-g1W"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOd-PR-JUf">
@@ -96,7 +85,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="Happy"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="happy" id="nyS-Lg-9Ng"/>
+                                            <segue destination="2N8-Bb-haa" kind="showDetail" identifier="happy" id="nyS-Lg-9Ng"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYa-JI-hvO">
@@ -104,7 +93,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="Worried"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="worried" id="2yC-Pc-Aiw"/>
+                                            <segue destination="2N8-Bb-haa" kind="showDetail" identifier="worried" id="2yC-Pc-Aiw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyy-mW-Qyp">
@@ -112,7 +101,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="Mischievious"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="mischievious" id="cfp-vb-T5S"/>
+                                            <segue destination="2N8-Bb-haa" kind="showDetail" identifier="mischievious" id="cfp-vb-T5S"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -150,9 +139,28 @@
             </objects>
             <point key="canvasLocation" x="-626.08695652173913" y="-472.09821428571428"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="29H-Bs-1oV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2N8-Bb-haa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="tby-pQ-T8b"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jLU-Yf-i5i">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="oZQ-tu-ysz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tkX-dE-EQ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="282.60869565217394" y="280.58035714285711"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cfp-vb-T5S"/>
+        <segue reference="leT-Vx-AS4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
