@@ -35,6 +35,9 @@ class CalculatorBrain {
         "=" : Operation.Equals
     ]
     
+    func addUnaryOperation(symbol : String, operation: @escaping (Double) -> Double){
+        operations[symbol] = Operation.UnaryOperation(operation)
+    }
     private var pending: PendingBinaryOperationInfo? // +, -, * , / 를 제외한 연산자는 nil을 가져야 하므로 Optional 타입으로 선언한다.
     
     private struct PendingBinaryOperationInfo {

@@ -20,6 +20,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         calculatorCount += 1
         print("Loaded up a new Calculator (Count = \(calculatorCount))")
+        
+        /*
+         그냥 self.display.textColot = UIColor.red 로 실행하여도 화면상에 문제는 없다.
+         하지만 메모리가 계속해서 축적되는 문제가 존재한다.
+         메모리 순환 문제를 처리하기 위해서 weak 지역 변수를 생성하여 처리한다.
+         이때, weak로 지정된 변수는 Optional변수이므로 Optional Chaining을 이용할 수 있다.
+         */
+        brain.addUnaryOperation(symbol: "Z") { [ weak weakSelf = self ] in
+            weakSelf?.display.textColor = UIColor.red
+            return sqrt($0)
+        }
     }
     deinit {
         calculatorCount -= 1
