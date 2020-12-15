@@ -70,7 +70,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="CgQ-pi-OEW">
-                                <rect key="frame" x="115" y="294" width="184" height="381"/>
+                                <rect key="frame" x="115" y="284.5" width="184" height="381"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5T-h3-rmu">
                                         <rect key="frame" x="55" y="0.0" width="74" height="48"/>
@@ -110,8 +110,8 @@
                         <viewLayoutGuide key="safeArea" id="SK3-hr-8fC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CgQ-pi-OEW" firstAttribute="top" secondItem="SK3-hr-8fC" secondAttribute="top" constant="206" id="odc-QQ-O8L"/>
-                            <constraint firstItem="CgQ-pi-OEW" firstAttribute="centerX" secondItem="NfO-9U-hW8" secondAttribute="centerX" id="y5E-w7-SNm"/>
+                            <constraint firstItem="CgQ-pi-OEW" firstAttribute="centerY" secondItem="SK3-hr-8fC" secondAttribute="centerY" id="GAI-C2-WJM"/>
+                            <constraint firstItem="CgQ-pi-OEW" firstAttribute="centerX" secondItem="SK3-hr-8fC" secondAttribute="centerX" id="fFu-zS-35a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vyt-0K-tjg"/>
@@ -160,7 +160,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="leT-Vx-AS4"/>
+        <segue reference="2yC-Pc-Aiw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
