@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -85,19 +86,26 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="yOo-3C-iUr"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="fKy-Ls-AVr"/>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="SuB-n6-yRL">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <color key="color" name="AccentColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dql-cW-Kx2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2iI-XQ-r7w"/>
                             <constraint firstItem="dql-cW-Kx2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8tc-Df-LOW"/>
+                            <constraint firstItem="SuB-n6-yRL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="90j-Cm-tov"/>
                             <constraint firstItem="dql-cW-Kx2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="RRW-V2-Cgq"/>
                             <constraint firstItem="dql-cW-Kx2" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="duo-h4-Kcj"/>
+                            <constraint firstItem="SuB-n6-yRL" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="uyU-kx-tfL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vDh-Rc-ghr"/>
                     <connections>
                         <outlet property="scrollView" destination="dql-cW-Kx2" id="G5V-rF-AqX"/>
+                        <outlet property="spinner" destination="SuB-n6-yRL" id="BhK-DJ-ht3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -145,6 +153,9 @@
         <segue reference="Hlp-7M-bWQ"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

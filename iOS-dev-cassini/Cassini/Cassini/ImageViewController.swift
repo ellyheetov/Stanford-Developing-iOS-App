@@ -19,6 +19,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     var imageView = UIImageView()
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     private var image: UIImage? {
         get {
@@ -28,6 +29,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
             imageView.image = newValue
             imageView.sizeToFit()
             scrollView?.contentSize = imageView.frame.size
+            spinner?.stopAnimating()
         }
     }
     
@@ -46,6 +48,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     private func fetchImage() {
         if let url = imageURL {
+            spinner?.startAnimating()
             /*
              메인쓰레드에서 동작하는 것이 아니라 global Queue에서 사용자가 특정 행위를 시작할 떄 발생하도록 한다.
              클로져 내에서 self를 사용할 때, self가 해당 클로져를 향하고 있는지 확인해야한다. (메모리 사이클을 방지하기 위해)
