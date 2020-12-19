@@ -15,15 +15,19 @@ class ViewController: UIViewController {
         }
     }
     @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet var cardButtons: [UIButton]!
     
-    @IBAction func touchSecondCard(_ sender: UIButton) {
-        flipCard(widthEmoji: "🎃", on: sender)
-    }
+    let emojiChoices = ["👻", "🎃","👻", "🎃"]
+    
     @IBAction func touchCard(_ sender: UIButton) {
-        flipCard(widthEmoji: "👻", on: sender)
+        flipCount += 1
+        if let cardNumber = cardButtons.firstIndex(of: sender) {
+            flipCard(widthEmoji: emojiChoices[cardNumber], on: sender)
+        } else {
+            print("chosen card was not in carButtons")
+        }
     }
     func flipCard(widthEmoji emoji: String, on button: UIButton){
-        flipCount += 1
         if button.currentTitle == emoji {
             button.setTitle("", for: UIControl.State.normal)
             button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
