@@ -11,7 +11,32 @@ class Concentration {
     
     var cards = [Card]()
     
-    var indexOfOneAndOnlyFaceUpCard: Int? // 뒤집혀진 카드의 인덱스를 저장하는 변수, 아무것도 뒤집혀 있지 않은 경우가 존재하므로 Optional Type이다.
+    /*
+     뒤집어진 카드의 인덱스를 저장하는 것이 목적이 아니다.
+     1. 뒤집어진 카드가 있는지
+     2. 일치하지 않는 카드가 있는지
+     변수를 활용할 때 결정된다.
+     */
+    var indexOfOneAndOnlyFaceUpCard: Int? {
+        get {
+            var foundIndex : Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp { // 카드가 한장 뒤집어져 있는 상황
+                    if foundIndex == nil { // 이전에 뒤집은 카드가 없는 경우
+                        foundIndex = index
+                    } else { // 이전에 뒤집은 카드가 있는 경우
+                        return nil
+                    }
+                }
+            }
+            return foundIndex
+        }
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
     
     func chooseCard(at index: Int) {
         
@@ -25,17 +50,7 @@ class Concentration {
                     cards[index].isMached = true
                 }
                 cards[index].isFaceUp = true // 일치하지 않은 경우에 대해서 사용자가 선택한 카드에 대한 isFaceUP은 true값을 가진다.
-                indexOfOneAndOnlyFaceUpCard = nil // 두장의 카드가 뒤집혀 있는 경우
             } else {
-                /*
-                 일치하지 않는 경우 모든 카드를 다시 뒤집어야 하고
-                 사용자가 선택한 값은 true로 만들고
-                 indexOfOneAndOnlyFaceUpCard에 사용자가 선택한 index라는 매개변수로 indentifier 값을 할당해준다.
-                */
-                for flipDownIndex in cards.indices {
-                    cards[flipDownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
