@@ -9,7 +9,7 @@ import Foundation
 
 class Concentration {
     
-    var cards = [Card]()
+    private(set) var cards = [Card]()
     
     /*
      뒤집어진 카드의 인덱스를 저장하는 것이 목적이 아니다.
@@ -17,7 +17,7 @@ class Concentration {
      2. 일치하지 않는 카드가 있는지
      변수를 활용할 때 결정된다.
      */
-    var indexOfOneAndOnlyFaceUpCard: Int? {
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
             var foundIndex : Int?
             for index in cards.indices {
