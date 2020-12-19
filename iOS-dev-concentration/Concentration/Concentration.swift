@@ -40,6 +40,9 @@ class Concentration {
     
     func chooseCard(at index: Int) {
         
+        // 존재하지 않는 index에 접근 하는 경우 console창에 에러메시지를 띄운다.
+        assert(cards.indices.contains(index), "Concentration.chooseCard(at:\(index)): chosen not in the cards")
+        
         if !cards[index].isMached {
             // 뒤집혀진 카드의 index값을 matchIndex에 넣는다. 이떄, 뒤집혀진 카드가 동일한 카드임을 방지한다.
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
@@ -57,6 +60,10 @@ class Concentration {
     }
     
     init(numberOfPairsOfCards: Int ){
+        
+        // 적어도 한쌍의 카드는 생성해야 한다.
+        assert(numberOfPairsOfCards > 0 , "Concentration.init(\(numberOfPairsOfCards)): you must have at least on pair of cars")
+        
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
