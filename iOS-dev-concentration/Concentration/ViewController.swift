@@ -18,14 +18,18 @@ class ViewController: UIViewController {
     }
     private(set) var flipCount = 0 {
         didSet {
-            flipCountLabel.text = "Flipse: \(flipCount)"
+            updateFlipCountLabel()
         }
     }
-    @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet weak var flipCountLabel: UILabel! {
+        didSet {
+            updateFlipCountLabel()
+        }
+    }
     @IBOutlet var cardButtons: [UIButton]!
     
-    private var emojiChoices = ["🦇", "😱", "🙀", "👿", "🎃", "👻", "🍭", "🍬", "🍎"]
-    private var emoji = [Int:String]()
+    private var emojiChoices = "🦇😱🙀👿🎃👻🍭🍬🍎"
+    private var emoji = [Card:String]()
     
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
@@ -51,6 +55,15 @@ class ViewController: UIViewController {
         }
     }
     
+    func updateFlipCountLabel(){
+        let attributes: [NSAttributedString.Key : Any] = [
+            .strokeColor : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1) ,
+            .strokeWidth : 5.0
+        ]
+        let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
+        flipCountLabel.attributedText = attributedString
+    }
+    
     /*
      카드 인자에 대해 emoji라는 함수가 호출되면 String 타입으로 반환한다.
      만약 유일한 구분자를 가지고 있는 카드에 매칭되는 이모지가 존재하지 않고,
@@ -60,15 +73,15 @@ class ViewController: UIViewController {
      그렇지 않은 경우에는 ? 를 반환한다.
      */
     private func emoji(for card : Card) -> String {
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
+        if emoji[card] == nil, emojiChoices.count > 0 {
+            let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
+            emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
         }
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 }
 
