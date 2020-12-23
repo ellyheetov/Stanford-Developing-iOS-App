@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1003EA6325935D4C0091B568 /* PlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1003EA6225935D4C0091B568 /* PlayingCard.swift */; };
+		1003EA6625935FFD0091B568 /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1003EA6525935FFD0091B568 /* PlayingCardDeck.swift */; };
 		10418C7F2593358F00907A5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10418C7E2593358F00907A5C /* AppDelegate.swift */; };
 		10418C812593358F00907A5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10418C802593358F00907A5C /* SceneDelegate.swift */; };
 		10418C832593358F00907A5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10418C822593358F00907A5C /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1003EA6225935D4C0091B568 /* PlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCard.swift; sourceTree = "<group>"; };
+		1003EA6525935FFD0091B568 /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
 		10418C7B2593358F00907A5C /* playingCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = playingCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10418C7E2593358F00907A5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10418C802593358F00907A5C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				10418C872593359000907A5C /* Assets.xcassets */,
 				10418C892593359000907A5C /* LaunchScreen.storyboard */,
 				10418C8C2593359000907A5C /* Info.plist */,
+				1003EA6225935D4C0091B568 /* PlayingCard.swift */,
+				1003EA6525935FFD0091B568 /* PlayingCardDeck.swift */,
 			);
 			path = playingCard;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			files = (
 				10418C832593358F00907A5C /* ViewController.swift in Sources */,
 				10418C7F2593358F00907A5C /* AppDelegate.swift in Sources */,
+				1003EA6625935FFD0091B568 /* PlayingCardDeck.swift in Sources */,
+				1003EA6325935D4C0091B568 /* PlayingCard.swift in Sources */,
 				10418C812593358F00907A5C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
